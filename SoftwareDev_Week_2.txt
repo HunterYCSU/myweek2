@@ -70,10 +70,10 @@ SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
-CREATE view [dbo].[CustomerSales]
+ALTER view [dbo].[CustomerSales]
 as
 select c.Id as 'Customer Id', c.FirstName, c.LastName, s.DateSold, p.[Name], p.Price
-, [dbo].[GetCustomerAmount](c.Id) as 'Total Purchases'
+, [dbo].[GetCustomerAmount](c.Id) as 'Total Purchases', c.FirstName + c.LastName as 'Full Name'
 	from Customer c
 		left join 
 			Sale s on 
